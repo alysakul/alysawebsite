@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alysa Kulchenko</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="logo">ALYSA</h1>
+  <nav class="site-nav" id="siteNav" aria-label="Primary"></nav>
+</header>
+
+<main class="hero">
+  <div class="portrait-frame" id="portraitFrame" aria-label="Self portrait animation — coming soon"></div>
+
+  <div class="intro">
+    <p class="intro__text">
+      Hi, I&rsquo;m Alysa &mdash; a designer and developer who likes building
+      things by hand, then teaching a computer to do it too.
+    </p>
+
+    <div class="contact">
+      <a class="contact__email" href="mailto:alysa@kulchenko.com">alysa@kulchenko.com</a>
+      <a class="contact__linkedin" href="https://www.linkedin.com/in/alysa-kulchenko/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+        <img src="assets/icons/linkedin.svg" alt="" width="22" height="22">
+      </a>
+    </div>
+
+    <div class="cta-group" id="ctaGroup">
+      <button class="cta-btn" type="button" data-label="Projects">Projects</button>
+      <button class="cta-btn" type="button" data-label="About">About</button>
+      <button class="cta-btn cta-btn--accent" type="button" data-label="Gallery">Gallery</button>
+    </div>
+  </div>
+</main>
+
+<section class="skills" aria-label="Skills">
+  <div class="skills__track" id="skillsTrack">
+    <div class="skills__rows" id="skillsRows"></div>
+  </div>
+  <aside class="skills__detail" id="skillsDetail" hidden>
+    <h3 class="skills__detail-title" id="skillsDetailTitle"></h3>
+    <p class="skills__detail-body" id="skillsDetailBody"></p>
+  </aside>
+</section>
+
+<script src="js/main.js"></script>
+</body>
+</html>
