@@ -1,85 +1,71 @@
 (function () {
   'use strict';
 
-  /* ---------- CTA buttons drift into header nav ---------- */
+  /* ---------- floating head (hover-to-rotate self portrait) ---------- */
 
-  var ctaGroup = document.getElementById('ctaGroup');
-  var siteNav = document.getElementById('siteNav');
-  var docked = false;
+  var portrait = document.getElementById('portraitFrame');
+  if (portrait) {
+    var HEAD_COLS = 6;
+    var HEAD_ROWS = 4;
+    var HEAD_FRAME_COUNT = 23;
+    var HEAD_INTERVAL = 70;
+    var headFrame = 0;
+    var headTimer = null;
 
-  function dockButtons() {
-    if (docked) return;
-    docked = true;
+    function setHeadFrame(i) {
+      var col = i % HEAD_COLS;
+      var row = Math.floor(i / HEAD_COLS);
+      var xPct = (col / (HEAD_COLS - 1)) * 100;
+      var yPct = (row / (HEAD_ROWS - 1)) * 100;
+      portrait.style.backgroundPosition = xPct + '% ' + yPct + '%';
+    }
 
-    var buttons = Array.prototype.slice.call(ctaGroup.querySelectorAll('.cta-btn'));
-
-    var firstRects = buttons.map(function (btn) {
-      return btn.getBoundingClientRect();
+    portrait.addEventListener('mouseenter', function () {
+      if (headTimer) clearInterval(headTimer);
+      headTimer = setInterval(function () {
+        headFrame = (headFrame + 1) % HEAD_FRAME_COUNT;
+        setHeadFrame(headFrame);
+      }, HEAD_INTERVAL);
     });
 
-    buttons.forEach(function (btn) {
-      siteNav.appendChild(btn);
-      btn.classList.add('is-docked');
+    portrait.addEventListener('mouseleave', function () {
+      if (headTimer) {
+        clearInterval(headTimer);
+        headTimer = null;
+      }
+      headFrame = 0;
+      setHeadFrame(0);
     });
-
-    var lastRects = buttons.map(function (btn) {
-      return btn.getBoundingClientRect();
-    });
-
-    buttons.forEach(function (btn, i) {
-      var dx = firstRects[i].left - lastRects[i].left;
-      var dy = firstRects[i].top - lastRects[i].top;
-      btn.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
-    });
-
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        buttons.forEach(function (btn) {
-          btn.classList.add('is-animating');
-          btn.style.transform = '';
-        });
-      });
-    });
-
-    var cleanup = function () {
-      buttons.forEach(function (btn) {
-        btn.classList.remove('is-animating');
-        btn.removeEventListener('transitionend', cleanup);
-      });
-    };
-    buttons[0].addEventListener('transitionend', cleanup);
   }
-
-  ctaGroup.addEventListener('click', function (e) {
-    var btn = e.target.closest('.cta-btn');
-    if (!btn) return;
-    dockButtons();
-  });
 
   /* ---------- skills carousel ---------- */
 
+  if (!document.getElementById('skillsRows')) {
+    return;
+  }
+
   var SKILLS = [
-    { name: 'ChatGPT', file: 'chatgpt', color: '#000000' },
-    { name: 'Claude', file: 'claude', color: '#D97757' },
-    { name: 'VS Code', file: 'vscode-color', color: '#007ACC' },
-    { name: 'Figma', file: 'figma-color', color: '#F24E1E' },
-    { name: 'GitHub', file: 'github', color: '#181717' },
-    { name: 'React', file: 'react', color: '#61DAFB' },
-    { name: 'Vite', file: 'vite-color', color: '#646CFF' },
-    { name: 'Firebase', file: 'firebase-color', color: '#DD2C00' },
-    { name: 'Jira', file: 'jira-color', color: '#0052CC' },
-    { name: 'WordPress', file: 'wordpress', color: '#21759B' },
-    { name: 'Bootstrap', file: 'bootstrap', color: '#7952B3' },
-    { name: 'Jest', file: 'jest', color: '#C21325' },
-    { name: 'Squarespace', file: 'squarespace', color: '#000000' },
-    { name: 'Canva', file: 'canva', color: '#00C4CC' },
-    { name: 'Procreate Dreams', file: 'procreate', color: '#6E3AFF' },
-    { name: 'Java', file: 'java', color: '#000000' },
-    { name: 'JavaScript', file: 'javascript', color: '#F7DF1E' },
-    { name: 'HTML', file: 'html', color: '#E34F26' },
-    { name: 'CSS', file: 'css', color: '#1572B6' },
-    { name: 'SQL', file: 'sql', color: '#4A90D9' },
-    { name: 'R', file: 'r-color', color: '#276DC3' }
+    { name: 'ChatGPT', file: 'chatgpt.svg', color: '#000000' },
+    { name: 'Claude', file: 'claude.svg', color: '#D97757' },
+    { name: 'VS Code', file: 'vscode-color.svg', color: '#007ACC' },
+    { name: 'Figma', file: 'figma-color.svg', color: '#F24E1E' },
+    { name: 'GitHub', file: 'github.svg', color: '#181717' },
+    { name: 'React', file: 'react.svg', color: '#61DAFB' },
+    { name: 'Vite', file: 'vite-color.svg', color: '#646CFF' },
+    { name: 'Firebase', file: 'firebase-color.svg', color: '#DD2C00' },
+    { name: 'Jira', file: 'jira-color.svg', color: '#0052CC' },
+    { name: 'WordPress', file: 'wordpress.svg', color: '#21759B' },
+    { name: 'Bootstrap', file: 'bootstrap.svg', color: '#7952B3' },
+    { name: 'Squarespace', file: 'squarespace.svg', color: '#000000' },
+    { name: 'Canva', file: 'canva.svg', color: '#00C4CC' },
+    { name: 'Procreate', file: 'procreate.png', color: '#CF4BE1' },
+    { name: 'Procreate Dreams', file: 'procreate-dreams.png', color: '#FB9059' },
+    { name: 'Java', file: 'java.svg', color: '#000000' },
+    { name: 'JavaScript', file: 'javascript.svg', color: '#F7DF1E' },
+    { name: 'HTML', file: 'html.svg', color: '#E34F26' },
+    { name: 'CSS', file: 'css.svg', color: '#1572B6' },
+    { name: 'SQL', file: 'sql.svg', color: '#4A90D9' },
+    { name: 'R', file: 'r-color.svg', color: '#276DC3' }
   ];
 
   function shuffle(arr) {
@@ -98,6 +84,41 @@
   var rows = [[], [], []];
   shuffled.forEach(function (skill, i) {
     rows[i % rowCount].push(skill);
+  });
+
+  /* Every row must end up the same total width, since all three rows share
+     one scrollLeft — if SKILLS.length doesn't divide evenly by rowCount,
+     pad the shorter rows by repeating their own items so measure()/wrapScroll()
+     (which assume uniform row width) don't desync and show a blank gap. */
+  var maxRowLen = Math.max.apply(null, rows.map(function (r) { return r.length; }));
+  rows.forEach(function (row) {
+    var originalLen = row.length;
+    var i = 0;
+    while (row.length < maxRowLen) {
+      row.push(row[i % originalLen]);
+      i++;
+    }
+  });
+
+  /* Padding can put the same skill at both the start and end of a row, which
+     then sits next to itself every time the row repeats (DUPES) back-to-back —
+     that read as the same icon showing up twice in a row. Break any adjacent
+     match (including the wrap-around seam) by swapping it with a far item. */
+  rows.forEach(function (row) {
+    for (var guard = 0; guard < 20; guard++) {
+      var dupIndex = -1;
+      for (var k = 0; k < row.length; k++) {
+        if (row[k].name === row[(k + 1) % row.length].name) {
+          dupIndex = k;
+          break;
+        }
+      }
+      if (dupIndex === -1) break;
+      var swapWith = (dupIndex + Math.floor(row.length / 2)) % row.length;
+      var tmp = row[dupIndex];
+      row[dupIndex] = row[swapWith];
+      row[swapWith] = tmp;
+    }
   });
 
   var rowsEl = document.getElementById('skillsRows');
@@ -127,7 +148,7 @@
         item.style.setProperty('--item-color', skill.color);
 
         var img = document.createElement('img');
-        img.src = 'assets/icons/' + skill.file + '.svg';
+        img.src = 'assets/icons/' + skill.file;
         img.alt = skill.name;
 
         item.appendChild(img);

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoMate — Alysa Kulchenko</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" aria-label="Home" style="text-decoration:none;">
+    <h1 class="logo">alysa</h1>
+  </a>
+  <nav class="site-nav page-nav" aria-label="Primary">
+    <a href="../projects.html" class="is-current" aria-current="page">projects</a>
+    <a href="../about.html">about</a>
+    <a href="../gallery.html">gallery</a>
+  </nav>
+</header>
+
+<main class="page-main page-main--narrow">
+  <a class="doc-back" href="../projects.html">&larr; Back to Work</a>
+
+  <div class="doc-header">
+    <h1 class="page-title" style="margin-bottom:0.4rem;">MemoMate</h1>
+    <p class="doc-meta">April &mdash; June 2025</p>
+    <div class="doc-tags">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Vite</span><span>Firebase</span><span>Figma</span><span>MUI</span>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h2>Your new go-to note app?</h2>
+    <p>MemoMate came to life as a project in a web development class I took in spring of 2025. It was the product of a quarter-long assignment to create a mobile-first web application with any topic of your choice. Out of all the possibilities, my partner and I agreed on creating a versatile note-taking application. As college students, we know to appreciate the perks of a good note-taking alternative, which inspired us to put our best foot forward with this project.</p>
+
+    <p>To make MemoMate stand out from the sea of alternative note-taking apps out there, we decided to add a key feature: user profiles. All notes and folders are saved to the corresponding profile, making it easy for multiple people to use the same account or for a single user to organize separate sets of notes, such as teachers managing student grades or recruiters tracking applicants.</p>
+
+    <p>Along with that, we designed MemoMate with all other features you would expect from a standard note-taking app. Users can create, delete, sort notes and folders. Users also have the opportunity to filter notes and folders both by title and profile name, and rename them to their liking.</p>
+
+    <h2>Diving in</h2>
+    <p>Before starting, we created a prototype of our app layout in Figma, visualizing the static components that we then created with HTML and CSS. The website wasn&rsquo;t interactive yet, our components simply returned the document object model (DOM) content. From there, we needed to rewrite all our components using JavaScript props to present content based on the data.</p>
+
+    <p>To make UI updates faster, more efficient, and easier to test, we built the app with React using Vite. To do this we needed to convert all static code into reusable components. My focus was on the functionality and appearance of notes and folders, making sure to convert them while also establishing a connection between notes and their corresponding folders. I used maps to sort them based on ID, so each note contained the associated folder ID, automatically adding it to the folder through which it was made. This process also helped my partner develop a similar system to associate folders and notes with specific user profiles, and for sorting notes based on keywords.</p>
+
+    <p>To keep track of note content, I used state, which allowed them to be constantly updated, while also making them easy to create or delete. In hindsight, this implementation could be optimized, as matching notes and folders by ID involves iterating through the list on each lookup, which is not the most efficient approach.</p>
+
+    <p>Once all DOM methods were converted to components, all components were routed to a single-page application so that app navigation could be efficiently managed. Finally, using the MUI library, a React library implementing Google&rsquo;s material design, I created alerts for when notes and folders are deleted.</p>
+
+    <p>To store profile data, we used Firebase&rsquo;s realtime database, which saved the profile IDs, and updated the information when users edited their profiles.</p>
+
+    <h2>My thoughts</h2>
+    <p>Am I happy with how the project turned out? Yes and no.</p>
+
+    <p>For my first website, I am very proud of the folder and note features I designed, enabling MemoMate to act like any other note-taking app. In hindsight though, I can acknowledge that there are things I would have done differently if I were starting this project now.</p>
+
+    <p>One of the most time consuming and frustrating steps was converting all static code into React components. While I now understand why that step is necessary for someone learning the basics of web development, the process is painfully inefficient. Moving forward, I know that I will start by building components from the outset.</p>
+
+    <p>I also admit that the CSS isn&rsquo;t the cleanest, and the app isn&rsquo;t as visually appealing as I would have liked. Considering that MemoMate was created as a mobile-first application, I wish that I&rsquo;d spent more time refining the aesthetic of different screen sizes.</p>
+
+    <p>Finally, the part I am most bummed out about is that user data isn&rsquo;t fully supported on the backend. While profile data is saved, notes and folders are not, which leaves the project feeling unfinished. Considering these factors, as my first website I celebrate its accomplishments, and use its flaws as lessons for how I&rsquo;ll approach future projects differently.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span class="site-footer__note">&copy; Alysa Kulchenko</span>
+  <div class="site-footer__contact">
+    <a class="contact__email" href="mailto:alysa@kulchenko.com">alysa@kulchenko.com</a>
+    <a class="contact__linkedin" href="https://www.linkedin.com/in/alysa-kulchenko/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+      <img src="../assets/icons/linkedin.svg" alt="" width="22" height="22">
+    </a>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
