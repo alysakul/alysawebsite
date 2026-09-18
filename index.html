@@ -11,55 +11,58 @@
 </head>
 <body>
 
-<header class="site-header">
-  <a href="index.html" aria-label="Home" style="text-decoration:none;">
-    <h1 class="logo">alysa</h1>
-  </a>
-  <nav class="site-nav page-nav" aria-label="Primary">
-    <a href="projects.html">projects</a>
-    <a href="about.html">about</a>
-    <a href="gallery.html">gallery</a>
-  </nav>
-</header>
+<main class="editorial">
+  <h1 class="editorial__mast">alysa</h1>
+  <div class="editorial__rule">
+    <span>designer &middot; developer &middot; artist</span>
+    <span>seattle, wa</span>
+  </div>
 
-<main class="hero">
-  <div class="portrait-frame" id="portraitFrame" role="img" aria-label="Hand-drawn self portrait of Alysa, rotating on hover"></div>
+  <div class="editorial__body">
+    <div>
+      <p class="editorial__bio"><span class="drop">H</span>i, I&rsquo;m Alysa. A student at University of Washington, a designer, developer, and artist. I love coming up with unique and beautiful solutions to problems.</p>
 
-  <div class="intro">
-    <p class="intro__text">
-      Hi, I&rsquo;m Alysa &mdash; a designer and developer who likes building
-      things by hand, then teaching a computer to do it too.
-    </p>
+      <nav class="editorial__nav page-nav" aria-label="Primary">
+        <a href="projects.html">projects</a><span class="sep">&mdash;</span>
+        <a href="about.html">about</a><span class="sep">&mdash;</span>
+        <a href="gallery.html">gallery</a>
+      </nav>
 
-    <div class="contact">
-      <a class="contact__email" href="mailto:alysa@kulchenko.com">alysa@kulchenko.com</a>
-      <a class="contact__linkedin" href="https://www.linkedin.com/in/alysa-kulchenko/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-        <img src="assets/icons/linkedin.svg" alt="" width="22" height="22">
-      </a>
+      <div class="contact contact--row editorial__contact">
+        <a class="contact__email" href="mailto:alysa@kulchenko.com">email</a>
+        <a class="contact__linkedin" href="https://www.linkedin.com/in/alysa-kulchenko/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <img src="assets/icons/linkedin.svg" alt="" width="22" height="22">
+        </a>
+      </div>
+    </div>
+
+    <div class="editorial__portrait-col">
+      <div class="portrait-frame" id="portraitFrame" role="img" aria-label="Hand-drawn self portrait of Alysa, rotating on hover"></div>
     </div>
   </div>
 </main>
 
-<section class="skills" aria-label="Skills">
-  <div class="skills__track" id="skillsTrack">
-    <div class="skills__rows" id="skillsRows"></div>
+<section class="editorial-work" aria-label="Recent work">
+  <div>
+    <p class="editorial-work__eyebrow">Recent work</p>
+    <h2>cascade</h2>
+    <p>A citizen-science platform for safely tapering off psychiatric medication.</p>
   </div>
-  <aside class="skills__detail" id="skillsDetail" hidden>
-    <h3 class="skills__detail-title" id="skillsDetailTitle"></h3>
-    <p class="skills__detail-body" id="skillsDetailBody"></p>
-  </aside>
+  <div class="editorial-work__shot">
+    <img src="assets/images/recent-work/cascade-preview.jpg" alt="Preview of Cascade, a citizen-science platform for safely tapering psychiatric medication">
+  </div>
 </section>
 
 <footer class="site-footer">
   <span class="site-footer__note">&copy; Alysa Kulchenko</span>
   <div class="site-footer__contact">
-    <a class="contact__email" href="mailto:alysa@kulchenko.com">alysa@kulchenko.com</a>
+    <a class="contact__email" href="mailto:alysa@kulchenko.com">email</a>
     <a class="contact__linkedin" href="https://www.linkedin.com/in/alysa-kulchenko/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
       <img src="assets/icons/linkedin.svg" alt="" width="22" height="22">
     </a>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>
