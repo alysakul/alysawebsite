@@ -65,11 +65,15 @@ button {
 
 .site-header {
   flex: 0 0 auto;
-  min-height: 104px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem clamp(3rem, 7vw, 7rem);
+  padding: 0.5rem clamp(3rem, 7vw, 7rem);
+  /* stays pinned to the top while the page scrolls */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
 }
 
 .logo-head {
@@ -346,7 +350,8 @@ button {
 
 .page-main {
   flex: 1 0 auto;
-  padding: 0.25rem clamp(3rem, 7vw, 7rem) 1.5rem;
+  /* space moved from the bottom to the top: content sits lower, page length unchanged */
+  padding: 1.75rem clamp(3rem, 7vw, 7rem) 0;
 }
 
 .page-main--narrow {
@@ -436,7 +441,7 @@ button {
 /* ---------- about page ---------- */
 
 /* about page is exactly one screen tall on desktop */
-@media (min-width: 901px) and (min-height: 600px) {
+@media (min-width: 901px) and (min-height: 720px) {
   body.page--fit {
     height: 100vh;
     height: 100dvh;
@@ -444,6 +449,7 @@ button {
   }
   body.page--fit .page-main {
     min-height: 0;
+    padding-bottom: 4rem;
   }
 }
 
@@ -453,6 +459,15 @@ button {
   column-gap: 0;
   row-gap: 2.5rem;
   align-items: start;
+}
+
+/* equal space above and below the section headings */
+.about-body .prose h2 {
+  margin-top: 0;
+}
+
+.about-body .prose p:has(+ h2) {
+  margin-bottom: 1rem;
 }
 
 .about-photos {
