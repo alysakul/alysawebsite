@@ -7,15 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=43">
+<link rel="stylesheet" href="../css/style.css?v=47">
 <link rel="icon" type="image/png" href="../assets/favicon/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
 </head>
 <body>
 
 <header class="site-header">
-  <a href="../index.html" aria-label="Home" style="text-decoration:none;">
-    <h1 class="logo">alysa</h1>
+  <a class="logo-head" href="../index.html" aria-label="Home">
+    <span class="portrait-frame portrait-frame--logo" data-head aria-hidden="true"></span>
   </a>
   <nav class="site-nav page-nav" aria-label="Primary">
     <a href="../projects.html" class="is-current" aria-current="page">projects</a>
@@ -25,6 +25,15 @@
 </header>
 
 <main class="page-main page-main--narrow">
+  <section class="doc-hero" aria-label="Know Before You Go demo video">
+    <div class="hero-video" data-hero-video>
+      <video src="../assets/videos/kbyg-demo.webm" poster="../assets/images/projects/know-before-you-go-title.jpg" preload="metadata" muted playsinline></video>
+      <button class="hero-video__play" type="button" aria-label="Play demo video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+      </button>
+    </div>
+  </section>
+
   <div class="doc-header">
     <h1 class="page-title" style="margin-bottom:0.4rem;">Know Before You Go</h1>
     <p class="doc-meta">January 2026 &mdash; Present</p>
@@ -35,7 +44,7 @@
 
   <div class="prose">
     <h2>A Hub for Nature Enthusiasts</h2>
-    <p>Going on a trip? Excited to explore, but worried about disrupting native environments? Know Before You Go offers the perfect solution. This website offers real-time data about endangered species reported anywhere in the United States. With one search, users explore entire lists of a variety of endangered species, educating themselves and ensuring that they&rsquo;re traveling with awareness and respect of their surroundings.</p>
+    <p>Going on a trip? Excited to explore, but worried about disrupting native environments? <a href="https://know-before-you-go.firebaseapp.com/" target="_blank" rel="noopener noreferrer">Know Before You Go</a> offers the perfect solution. This website offers real-time data about endangered species reported anywhere in the United States. With one search, users explore entire lists of a variety of endangered species, educating themselves and ensuring that they&rsquo;re traveling with awareness and respect of their surroundings.</p>
 
     <p>The inspiration for this project comes from Goal 15 of the 17 Sustainable Development Goals (SDG) created by the United Nations. <a href="https://sdgs.un.org/goals/goal15/" target="_blank" rel="noopener noreferrer">Goal 15</a> focuses on sustainability and ecosystem restoration and protection. With this in mind, my group decided to come up with a website that travelers, outdoor enthusiasts, and even children can use to educate themselves about endangered species in the United States.</p>
 
@@ -52,9 +61,8 @@
     <p>I&rsquo;m extremely happy with how the project turned out. After launching our website my group received a huge amount of positive feedback. Users complimented the real-time data accessibility as well as the clean design, which I am extremely proud of. This project is especially exciting as the developers chose datasets that are updated based on human sightings of endangered species, meaning that our website&rsquo;s species results will be automatically updated based on the reported data as time goes on. This allows data to remain accurate and for the website to stay functional with minimal maintenance.</p>
   </div>
 
-  <p style="margin-top:2.5rem;"><a class="doc-external" href="https://know-before-you-go.firebaseapp.com/" target="_blank" rel="noopener noreferrer">View the live site &rarr;</a></p>
 </main>
 
-<script src="../js/main.js?v=2"></script>
+<script src="../js/main.js?v=4"></script>
 </body>
 </html>

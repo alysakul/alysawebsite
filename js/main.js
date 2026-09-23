@@ -3,12 +3,12 @@
 
   /* ---------- floating head (hover-to-rotate self portrait) ---------- */
 
-  var portrait = document.getElementById('portraitFrame');
-  if (portrait) {
-    var HEAD_COLS = 6;
-    var HEAD_ROWS = 4;
-    var HEAD_FRAME_COUNT = 23;
-    var HEAD_INTERVAL = 70;
+  var HEAD_COLS = 6;
+  var HEAD_ROWS = 4;
+  var HEAD_FRAME_COUNT = 23;
+  var HEAD_INTERVAL = 70;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-head]'), function (portrait) {
     var headFrame = 0;
     var headTimer = null;
 
@@ -34,7 +34,28 @@
         headTimer = null;
       }
     });
-  }
+  });
+
+  /* ---------- hero video: paused on the title card until clicked ---------- */
+
+  var heroVideos = document.querySelectorAll('[data-hero-video]');
+  Array.prototype.forEach.call(heroVideos, function (wrap) {
+    var video = wrap.querySelector('video');
+
+    wrap.addEventListener('click', function () {
+      if (wrap.classList.contains('is-playing')) return;
+      wrap.classList.add('is-playing');
+      video.controls = true;
+      video.play();
+    });
+
+    // when it finishes, go back to the title card
+    video.addEventListener('ended', function () {
+      wrap.classList.remove('is-playing');
+      video.controls = false;
+      video.load();
+    });
+  });
 
   /* ---------- fade transition between pages ---------- */
 

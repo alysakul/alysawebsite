@@ -13,6 +13,8 @@
   --gray: #8c8c8c;
   --orange: #ff971c;
   --navy: #0e2747;
+  --blue: #3a6fb3;
+  --kbyg-green: #c3dfbd;
   --font-serif: 'Ibarra Real Nova', Georgia, serif;
   --font-sans: 'Avenir Next', Avenir, 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --nav-font-size: 1.4rem;
@@ -70,13 +72,16 @@ button {
   padding: 2rem clamp(3rem, 7vw, 7rem);
 }
 
-.logo {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: var(--nav-font-size);
-  line-height: 1;
-  color: var(--black);
+.logo-head {
+  display: block;
+  line-height: 0;
+}
+
+.logo-head .portrait-frame--logo {
+  display: block;
+  width: 58px;
+  max-width: none;
+  background-image: url('../assets/anim/floating-head/sprite-small.png');
 }
 
 .site-nav {
@@ -238,8 +243,6 @@ button {
 .contact__email {
   color: var(--black);
   text-decoration: none;
-  border-bottom: 1.5px solid var(--black);
-  padding-bottom: 2px;
 }
 
 .contact__email:hover {
@@ -388,6 +391,16 @@ button {
   margin: 2.4rem 0 1rem;
 }
 
+.prose a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.prose a:hover {
+  opacity: 0.7;
+}
+
 .prose strong {
   font-weight: 600;
 }
@@ -421,6 +434,18 @@ button {
 }
 
 /* ---------- about page ---------- */
+
+/* about page is exactly one screen tall on desktop */
+@media (min-width: 901px) and (min-height: 600px) {
+  body.page--fit {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  body.page--fit .page-main {
+    min-height: 0;
+  }
+}
 
 .about-body {
   display: grid;
@@ -580,13 +605,72 @@ button {
   color: var(--gray);
 }
 
-.doc-external {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
+.doc-hero {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 3rem;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  /* full-bleed band without causing horizontal scroll */
+  border-image: linear-gradient(var(--kbyg-green), var(--kbyg-green)) fill 0 / / 0 100vmax;
+}
+
+.hero-video {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-video__play {
+  position: absolute;
+  left: 50%;
+  top: 84%;
+  translate: -50% -50%;
+  width: clamp(2.75rem, 8%, 4.5rem);
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-video__play svg {
+  width: 45%;
+  height: 45%;
+  fill: currentColor;
+  margin-left: 6%;
+}
+
+.hero-video__play:hover,
+.hero-video__play:focus-visible {
+  transform: scale(1.08);
+  background: var(--orange);
+}
+
+.hero-video.is-playing {
+  cursor: auto;
+}
+
+.hero-video.is-playing .hero-video__play {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ---------- gallery page ---------- */
@@ -594,11 +678,6 @@ button {
 .gallery-intro {
   max-width: none;
   margin-bottom: 3rem;
-}
-
-.gallery-intro a {
-  color: var(--black);
-  text-decoration: underline;
 }
 
 .gallery-grid {
