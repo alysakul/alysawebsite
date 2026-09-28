@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=55">
+<link rel="stylesheet" href="../css/style.css?v=94">
 <link rel="icon" type="image/png" href="../assets/favicon/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
 </head>
@@ -24,16 +24,39 @@
   </nav>
 </header>
 
-<main class="page-main page-main--narrow">
+<main class="page-main">
+  <div class="page-main--narrow">
   <div class="doc-header">
-    <h1 class="page-title" style="margin-bottom:0.4rem;">MemoMate</h1>
-    <p class="doc-meta">April &mdash; June 2025</p>
-    <div class="doc-tags">
-      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Vite</span><span>Firebase</span><span>Figma</span><span>MUI</span>
+    <div class="doc-header__main">
+      <h1 class="page-title">Building a mobile-first note-taking app with user profiles as a first React project</h1>
+      <p class="doc-subtitle">A mobile-first note-taking app with user profiles, built for a web development class.</p>
+    </div>
+    <div class="doc-header__meta">
+      <div class="doc-meta-col">
+        <div class="doc-meta-block">
+          <span class="doc-meta-label">Timeline</span>
+          <span class="doc-meta-value">April &mdash; June 2025</span>
+        </div>
+        <div class="doc-meta-block">
+          <span class="doc-meta-label">Role</span>
+          <div class="doc-meta-value doc-meta-list">
+            <span>Developer</span><span>Designer</span>
+          </div>
+        </div>
+      </div>
+      <div class="doc-meta-col">
+        <div class="doc-meta-block">
+          <span class="doc-meta-label">Tools</span>
+          <div class="doc-meta-value doc-meta-list">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Vite</span><span>Firebase</span><span>Figma</span><span>MUI</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="prose">
+    <p class="page-eyebrow">Overview</p>
     <h2>Your new go-to note app?</h2>
     <p>MemoMate came to life as a project in a web development class I took in spring of 2025. It was the product of a quarter-long assignment to create a mobile-first web application with any topic of your choice. Out of all the possibilities, my partner and I agreed on creating a versatile note-taking application. As college students, we know to appreciate the perks of a good note-taking alternative, which inspired us to put our best foot forward with this project.</p>
 
@@ -41,6 +64,7 @@
 
     <p>Along with that, we designed MemoMate with all other features you would expect from a standard note-taking app. Users can create, delete, sort notes and folders. Users also have the opportunity to filter notes and folders both by title and profile name, and rename them to their liking.</p>
 
+    <p class="page-eyebrow">Process</p>
     <h2>Diving in</h2>
     <p>Before starting, we created a prototype of our app layout in Figma, visualizing the static components that we then created with HTML and CSS. The website wasn&rsquo;t interactive yet, our components simply returned the document object model (DOM) content. From there, we needed to rewrite all our components using JavaScript props to present content based on the data.</p>
 
@@ -52,6 +76,7 @@
 
     <p>To store profile data, we used Firebase&rsquo;s realtime database, which saved the profile IDs, and updated the information when users edited their profiles.</p>
 
+    <p class="page-eyebrow">Outcome</p>
     <h2>My thoughts</h2>
     <p>Am I happy with how the project turned out? Yes and no.</p>
 
@@ -62,6 +87,7 @@
     <p>I also admit that the CSS isn&rsquo;t the cleanest, and the app isn&rsquo;t as visually appealing as I would have liked. Considering that MemoMate was created as a mobile-first application, I wish that I&rsquo;d spent more time refining the aesthetic of different screen sizes.</p>
 
     <p>Finally, the part I am most bummed out about is that user data isn&rsquo;t fully supported on the backend. While profile data is saved, notes and folders are not, which leaves the project feeling unfinished. Considering these factors, as my first website I celebrate its accomplishments, and use its flaws as lessons for how I&rsquo;ll approach future projects differently.</p>
+  </div>
   </div>
 </main>
 
