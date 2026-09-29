@@ -251,12 +251,30 @@ button {
 }
 
 .contact__email {
+  position: relative;
   color: var(--black);
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact__email::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: translateX(-50%);
+  transition: width 0.55s ease;
 }
 
 .contact__email:hover {
-  opacity: 0.6;
+  color: var(--orange);
+}
+
+.contact__email:hover::after {
+  width: 100%;
 }
 
 .contact__linkedin {
@@ -397,7 +415,7 @@ button {
   line-height: 1.7;
 }
 
-.musemap-page .prose {
+.project-page .prose {
   font-weight: 400;
 }
 
@@ -990,11 +1008,19 @@ button {
   opacity: 0.9;
 }
 
+.project-card__thumb--tinted img {
+  opacity: 0.9;
+}
+
 .project-card__thumb--framed {
   background: var(--musemap-green);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.project-card__thumb--placeholder {
+  background: var(--line);
 }
 
 .project-card__thumb--framed img {

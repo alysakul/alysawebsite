@@ -33,6 +33,10 @@
         clearInterval(headTimer);
         headTimer = null;
       }
+      if (portrait.classList.contains('portrait-frame--logo')) {
+        headFrame = 0;
+        setHeadFrame(headFrame);
+      }
     });
   });
 
