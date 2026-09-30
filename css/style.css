@@ -20,6 +20,7 @@
   --musemap-dark: #413d3e;
   --musemap-cream: #f9f7f3;
   --musemap-tan: #e5dfd6;
+  --prime-factor-blue: #4678b2;
   --font-serif: 'Ibarra Real Nova', Georgia, serif;
   --font-sans: 'Avenir Next', Avenir, 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --nav-font-size: 1.4rem;
@@ -1021,6 +1022,10 @@ button {
 
 .project-card__thumb--placeholder {
   background: var(--line);
+}
+
+.project-card__thumb--pf {
+  background: var(--prime-factor-blue);
 }
 
 .project-card__thumb--framed img {
