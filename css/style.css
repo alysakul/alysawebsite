@@ -21,7 +21,9 @@
   --musemap-cream: #f9f7f3;
   --musemap-tan: #e5dfd6;
   --prime-factor-blue: #4678b2;
+  --cascade-navy: #112845;
   --font-serif: 'Ibarra Real Nova', Georgia, serif;
+  --font-display: 'Barlow Condensed', 'Avenir Next Condensed', 'Arial Narrow', sans-serif;
   --font-sans: 'Avenir Next', Avenir, 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --nav-font-size: 1.4rem;
 }
@@ -417,7 +419,16 @@ button {
 }
 
 .project-page .prose {
+  font-size: 1.05rem;
   font-weight: 400;
+}
+
+.project-page .prose h2 {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
 }
 
 .prose p {
@@ -470,6 +481,11 @@ button {
 
 .split-section--center {
   align-items: center;
+}
+
+.split-section--even-lines h2,
+.split-section--even-lines p {
+  text-wrap: balance;
 }
 
 .split-section .page-eyebrow,
@@ -1026,6 +1042,10 @@ button {
 
 .project-card__thumb--pf {
   background: var(--prime-factor-blue);
+}
+
+.project-card__thumb--cascade {
+  background: var(--cascade-navy);
 }
 
 .project-card__thumb--framed img {
