@@ -21,7 +21,11 @@
   --musemap-cream: #f9f7f3;
   --musemap-tan: #e5dfd6;
   --prime-factor-blue: #4678b2;
+  --pf-site-blue: #347ab7;
+  --pf-site-orange: #d78511;
+  --pf-site-teal: #19b2b6;
   --cascade-navy: #112845;
+  --pf-tint: #dde9f4;
   --font-serif: 'Ibarra Real Nova', Georgia, serif;
   --font-display: 'Barlow Condensed', 'Avenir Next Condensed', 'Arial Narrow', sans-serif;
   --font-sans: 'Avenir Next', Avenir, 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
@@ -36,7 +40,8 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  /* clip (not hidden) so body isn't a scroll container, which would break the sticky header */
+  overflow-x: clip;
   background: var(--bg);
   color: var(--black);
   font-family: var(--font-sans);
@@ -83,6 +88,7 @@ button {
   top: 0;
   z-index: 50;
   background: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 .logo-head {
@@ -368,6 +374,14 @@ button {
 }
 
 .page-nav a.is-current {
+  color: var(--orange);
+}
+
+.site-header.is-on-dark .page-nav a:not(.is-current) {
+  color: var(--white);
+}
+
+.site-header.is-on-dark .page-nav a:not(.is-current):hover {
   color: var(--orange);
 }
 
@@ -668,6 +682,152 @@ button {
   color: var(--musemap-dark);
   margin: 0;
   line-height: 1.4;
+}
+
+.device-trio {
+  display: grid;
+  grid-template-columns: 1.35fr 0.6fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin: 2rem 0 1rem;
+}
+
+.prose .device-trio figure {
+  margin: 0;
+}
+
+.device-trio img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.device-trio .device-trio__mobile img {
+  border: none;
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .device-trio {
+    grid-template-columns: 1fr 0.5fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* full-bleed tinted band: the shadow extends sideways to the viewport edges, clip-path trims it vertically */
+.tinted-section {
+  position: relative;
+  margin: 6.5rem 0 0;
+  padding: 3.5rem 0 3rem;
+  background: var(--pf-tint);
+  box-shadow: 0 0 0 100vmax var(--pf-tint);
+  clip-path: inset(0 -100vmax);
+}
+
+.prose .tinted-section > .page-eyebrow:first-child {
+  margin-top: 0;
+}
+
+.prose .tinted-section .compare-label,
+.prose .tinted-section figcaption {
+  color: #1f2d3d;
+}
+
+.compare-block {
+  margin: 2.5rem 0 0;
+}
+
+.prose .tinted-section .compare-block + p {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.prose .compare-block__header {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.button-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.button-compare__page {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.prose .compare-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0;
+}
+
+.spacing-stack {
+  display: grid;
+  gap: 0.75rem;
+  width: 66.667%;
+  margin: 0 auto;
+}
+
+.prose .button-compare figure,
+.prose .spacing-stack figure {
+  margin: 0;
+}
+
+
+.button-compare img,
+.spacing-stack img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 700px) {
+  .button-compare {
+    grid-template-columns: 1fr;
+  }
+
+  .spacing-stack {
+    width: 100%;
+  }
+}
+
+.stat-bubble__note {
+  display: block;
+}
+
+.stat-bubble--pf-blue {
+  background: #d3f1ef;
+}
+
+.stat-bubble--pf-blue .stat-bubble__number {
+  color: var(--pf-site-teal);
+}
+
+.stat-bubble--pf-orange {
+  background: #fbefdc;
+}
+
+.stat-bubble--pf-orange .stat-bubble__number {
+  color: var(--pf-site-orange);
+}
+
+.stat-bubble--pf-blue p.stat-bubble__label,
+.stat-bubble--pf-orange p.stat-bubble__label {
+  color: #1f3a5f;
 }
 
 .pain-point-grid {
@@ -1156,6 +1316,7 @@ button {
 }
 
 .doc-hero {
+  --header-tint: var(--kbyg-green);
   display: flex;
   justify-content: center;
   margin: 0.5rem 0 3rem;

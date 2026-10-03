@@ -61,6 +61,51 @@
     });
   });
 
+  /* ---------- header takes on the colour of the section under it ---------- */
+
+  var header = document.querySelector('.site-header');
+  /* every full-width coloured band on the site; a band whose colour isn't a plain
+     background (e.g. a border-image fill) can declare it with --header-tint */
+  var tinted = document.querySelectorAll('.tinted-section, .hmw-banner, .doc-hero');
+
+  if (header && tinted.length) {
+    var ticking = false;
+
+    var updateHeaderTint = function () {
+      ticking = false;
+      var probe = header.getBoundingClientRect().height / 2;
+      var color = '';
+      for (var i = 0; i < tinted.length; i++) {
+        var r = tinted[i].getBoundingClientRect();
+        if (r.top <= probe && r.bottom >= probe) {
+          var cs = window.getComputedStyle(tinted[i]);
+          color = cs.getPropertyValue('--header-tint').trim() || cs.backgroundColor;
+          break;
+        }
+      }
+      header.style.backgroundColor = color;
+
+      /* switch the nav text to light when the band behind it is dark */
+      var m = color.match(/\d+(\.\d+)?/g);
+      var dark = false;
+      if (m && m.length >= 3) {
+        dark = (0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2]) < 128;
+      }
+      header.classList.toggle('is-on-dark', dark);
+    };
+
+    var requestUpdate = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateHeaderTint);
+      }
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateHeaderTint();
+  }
+
   /* ---------- fade transition between pages ---------- */
 
   document.addEventListener('click', function (e) {

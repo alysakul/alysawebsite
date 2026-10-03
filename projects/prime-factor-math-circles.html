@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=110">
+<link rel="stylesheet" href="../css/style.css?v=137">
 <link rel="icon" type="image/png" href="../assets/favicon/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
 </head>
@@ -29,7 +29,7 @@
   <div class="doc-header">
     <div class="doc-header__main">
       <h1 class="page-title">Developing a local school's website under strict design constraints</h1>
-      <p class="doc-subtitle">In three weeks I singlehandedly rebuilt a 16-page website for Prime Factor, a children's nonprofit after-school program.
+      <p class="doc-subtitle">In three weeks I singlehandedly rebuilt a 16-page website for Prime Factor Math Circles, a children's nonprofit after-school program.
       </p>
     </div>
     <div class="doc-header__meta">
@@ -58,7 +58,7 @@
     <div class="split-section split-section--balanced split-section--center split-section--even-lines">
       <div class="split-section__text">
         <p class="page-eyebrow">Context</p>
-        <h2>Issues in Prime Factor's website design</h2>
+        <h2>Where Prime Factor's website fell short</h2>
     <ul>
       <li>Outdated UI</li>
       <li>Crowded layout</li>
@@ -73,10 +73,145 @@
         </figure>
       </div>
     </div>
+
+    <p class="page-eyebrow">Problem</p>
+    <h2>Prototype to page</h2>
+    <p>When the founders of Prime Factor approached me, they had a fully developed website prototype built by a team of designers.
+      They now needed a developer to implement the design and make the website live within the month so they could
+      review and finalize the website before the start of the new school year.
+    </p>
+
+    <p class="page-eyebrow">Research</p>
+    <h2>Understanding needs and pain points</h2>
+    <p>I reviewed the existing website and conducted a series of interviews with the founders and academic director
+      to understand the goals of the website, existing issues, and how the new Figma prototype addressed them. 
+    </p>
+    <p>From the beginning, they emphasized accessible and responsive design with mobile, tablet, and desktop compatibility.</p>
+
+    <p class="page-eyebrow">Early Development</p>
+    <h2>Deciding on the approach</h2>
+    <p>Considering the tight deadline, I decided to use Claude to speed up development. I had never used it for 
+      web development, so the first few days I experimented with different ways to transform each Figma page into code.
+    </p>
+    <p>After the first few pages, I was able to streamline the process and reduce the build time for subsequent pages.</p>
+    <div class="stat-row">
+      <div class="stat-bubble stat-bubble--pf-blue">
+        <span class="stat-bubble__number">3.67 hours</span>
+        <p class="stat-bubble__label">avg per page for the first three pages <span class="stat-bubble__note">(home, about, and contact)</span></p>
+      </div>
+      <div class="stat-bubble stat-bubble--pf-orange">
+        <span class="stat-bubble__number">1.5 hours</span>
+        <p class="stat-bubble__label">avg per page for the remaining 13</p>
+      </div>
+    </div>
+    
+    <p class="page-eyebrow">More Research</p>
+    <h2>Understanding the specs</h2>
+    <p>After builing the first two website pages, I met with the client again to make sure they were happy with the result.
+      We realized that the prototype was missing designs for tablets, so I worked with them to combine the existing desktop
+      and mobile designs to create a tablet view.
+    </p>
+
+    <div class="device-trio">
+      <figure>
+        <img src="../assets/images/projects/prime-factor-new-desktop.webp" alt="The new Prime Factor home page at desktop size: logo and full navigation bar across the top, with the hero photo on the left and the headline, description, and buttons on the right">
+        <figcaption>Desktop</figcaption>
+      </figure>
+      <figure class="device-trio__mobile">
+        <img src="../assets/images/projects/prime-factor-new-mobile-iphone.webp" alt="The new Prime Factor home page at mobile size: logo and menu button across the top, with the hero photo, headline, description, and buttons stacked in a single column">
+        <figcaption>Mobile</figcaption>
+      </figure>
+      <figure class="device-trio__tablet">
+        <img src="../assets/images/projects/prime-factor-new-tablet.webp" alt="The new Prime Factor home page at tablet size: menu button in the header and a single stacked column like mobile, with the larger hero photo and wider text from the desktop design">
+        <figcaption>Tablet</figcaption>
+      </figure>
+    </div>
+
+    <section class="tinted-section">
+      <p class="page-eyebrow">Development</p>
+      <h2>Inconsistencies in design</h2>
+      <p>As I worked on the remaining pages, I noticed inconsistencies in the prototype   design elements.</p>
+
+      <div class="compare-block">
+        <h3 class="compare-block__header">Buttons</h3>
+        <div class="button-compare">
+          <div class="button-compare__page">
+            <p class="compare-label">Summer programs page</p>
+            <figure>
+              <img src="../assets/images/projects/prime-factor-buttons-summer-desktop.webp" alt="Summer programs page, desktop: a filled mint Go to Registration button beside a plain-text Explore Programs link with an arrow">
+              <figcaption>Desktop</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/images/projects/prime-factor-buttons-summer-mobile.webp" alt="Summer programs page, mobile: a full-width filled mint Go to Registration button above a full-width outlined Explore programs button">
+              <figcaption>Mobile</figcaption>
+            </figure>
+          </div>
+          <div class="button-compare__page">
+            <p class="compare-label">Enrollment page</p>
+            <figure>
+              <img src="../assets/images/projects/prime-factor-buttons-enrollment-desktop.webp" alt="Enrollment page, desktop: a filled mint Go to Registration button beside a plain-text Explore Programs link with an arrow">
+              <figcaption>Desktop</figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/images/projects/prime-factor-buttons-enrollment-mobile.webp" alt="Enrollment page, mobile: a full-width filled mint Go to Registration button above a plain-text Explore Programs link with an arrow">
+              <figcaption>Mobile</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-block">
+        <h3 class="compare-block__header">Spacing</h3>
+        <div class="spacing-stack">
+          <figure>
+            <img src="../assets/images/projects/prime-factor-spacing-1.webp" alt="The Our Values section header on the Prime Factor prototype: a small label, a large heading, and a paragraph set far to the right of the heading">
+          </figure>
+          <figure>
+            <img src="../assets/images/projects/prime-factor-spacing-2.webp" alt="The Meet Our Teachers section header: the paragraph sits at a different horizontal position than in the Our Values header, with a View Full Teaching Team link below the heading">
+          </figure>
+          <figure>
+            <img src="../assets/images/projects/prime-factor-spacing-3.webp" alt="The Our Impact section header: another variation of heading and paragraph spacing, with a different gap above the cards">
+          </figure>
+        </div>
+      </div>
+      <p>I revised many instances of these inconsistencies to create a cohesive and unified design.</p>
+    </section>
+
+    <div class="split-section split-section--media-wide split-section--center">
+      <div class="split-section__text">
+        <p class="page-eyebrow">Development</p>
+        <h2>Button routing</h2>
+          <p>Most buttons in the prototype lacked routing. The client was
+             unsure of the final routing when I began development, so I left it until all pages were done.
+          </p>
+          <p>Once I began routing, it became extremely difficult to track the changes. Some buttons were 
+            rerouted multiple times based on how I or the client understood the website flow. For some, both
+            the client and I were unsure of where to route. There were many external links for registration, 
+            payment, textbooks and old class materials.
+          </p>
+          <p>Through close communication, I designed each route how the client envisioned.</p>
+      </div>
+      <div class="split-section__media">
+        <figure>
+          <img src="../assets/images/projects/prime-factor-button-routing.webp" alt="Notes listing where each button on the Prime Factor site should link, organized by page: Home, Math, Chess, Middle/High School, Summer Programs, News and Events, Learning Hub, and Curriculum and Books">
+        </figure>
+      </div>
+    </div>
+
+    <p class="page-eyebrow">Outcome</p>
+    <h2>Final result</h2>
+    <p>After three weeks, all pages were completed, and I handed them over to the client for review.
+      They wanted to wait until August in case they needed my help with any changes or maintenance instructions.
+      I made sure to provide them with detailed instructions on pages that required frequent updates.
+    </p>
+    <p>You can check out their website <a href="https://www.pfmathcircle.org/home.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
+
+    <p class="page-eyebrow">Outcome</p>
+    <h2>Reflection</h2>
   </div>
   </div>
 </main>
 
-<script src="../js/main.js?v=8"></script>
+<script src="../js/main.js?v=11"></script>
 </body>
 </html>
