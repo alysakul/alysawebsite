@@ -28,6 +28,7 @@
   --pf-tint: #dde9f4;
   --font-serif: 'Ibarra Real Nova', Georgia, serif;
   --font-display: 'Barlow Condensed', 'Avenir Next Condensed', 'Arial Narrow', sans-serif;
+  --font-round: 'Nunito Sans', 'Avenir Next', sans-serif;
   --font-sans: 'Avenir Next', Avenir, 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --nav-font-size: 1.4rem;
 }
@@ -438,11 +439,17 @@ button {
 }
 
 .project-page .prose h2 {
-  font-family: var(--font-display);
-  font-size: 2.3rem;
+  font-family: var(--font-round);
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.project-page .prose h3 {
+  font-family: var(--font-round);
+  font-size: 1.55rem;
   font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: 0.005em;
+  line-height: 1.25;
 }
 
 .prose p {
@@ -624,7 +631,7 @@ button {
 }
 
 .prose .takeaway-list h3 {
-  margin: 1.25rem 0 0.4rem;
+  margin: 0.9rem 0 0.3rem;
 }
 
 .prose .takeaway-list h3:first-child {
@@ -632,7 +639,7 @@ button {
 }
 
 .prose .takeaway-list p {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
 }
 
 .prose .takeaway-list p:last-child {
