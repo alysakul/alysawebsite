@@ -393,6 +393,91 @@ button {
   width: 100%;
 }
 
+/* ---------- mobile hamburger menu (button injected by js/main.js) ---------- */
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .site-header.has-menu {
+    flex-wrap: nowrap;
+    padding: 0.75rem 1.25rem 0.5rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--black);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .site-header.is-on-dark .nav-toggle {
+    color: var(--white);
+  }
+
+  .nav-toggle__bar {
+    display: block;
+    width: 26px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.2s ease;
+  }
+
+  .site-header.menu-open .nav-toggle {
+    color: var(--orange);
+  }
+
+  .site-header.menu-open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .site-header.menu-open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.menu-open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* the links open in a row on the header itself, to the right of the head and left of the button */
+  .site-header.has-menu .site-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 3.9rem;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: clamp(0.6rem, 3.5vw, 1.1rem);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .site-header.has-menu.menu-open .site-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s;
+  }
+
+  .site-header.has-menu .site-nav a {
+    font-size: clamp(0.85rem, 4.6vw, 1.2rem);
+  }
+}
+
 .page-main {
   flex: 1 0 auto;
   padding: 1.75rem clamp(3rem, 7vw, 7rem) 5rem;
@@ -1105,8 +1190,8 @@ button {
 
 /* ---------- about page ---------- */
 
-/* about page is exactly one screen tall on desktop */
-@media (min-width: 901px) and (min-height: 720px) {
+/* about page is exactly one screen tall on desktop and laptop, with the type scaling down to fit short windows */
+@media (min-width: 901px) and (min-height: 480px) {
   body.page--fit {
     height: 100vh;
     height: 100dvh;
@@ -1115,6 +1200,27 @@ button {
   body.page--fit .page-main {
     min-height: 0;
     padding-bottom: 4rem;
+  }
+
+  /* 1.2rem is the normal size; it only shrinks when the window is short or narrow */
+  body.page--fit .about-body {
+    font-size: max(12px, min(1.2rem, 2.7vh, 1.6vw));
+  }
+  body.page--fit .about-body .page-title {
+    font-size: 2.5em;
+    margin-bottom: 1.17em;
+  }
+  body.page--fit .about-body .prose {
+    font-size: 1em;
+  }
+  body.page--fit .about-body .prose p {
+    margin-bottom: 1.17em;
+  }
+  body.page--fit .about-body .prose p:has(+ h2) {
+    margin-bottom: 0.83em;
+  }
+  body.page--fit .about-body .prose h2 {
+    font-size: 1.46em;
   }
 }
 
@@ -1157,6 +1263,8 @@ button {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  /* keep her face and the pumpkin in the square crop */
+  object-position: 50% 100%;
   display: block;
 }
 
@@ -1481,11 +1589,13 @@ button {
   }
   .about-photos {
     position: static;
+    transform: none;
     flex-direction: row;
     flex-wrap: wrap;
   }
   .about-photo {
     flex: 1 1 200px;
+    width: auto;
   }
   .prose figure.figure--pair {
     grid-template-columns: 1fr;

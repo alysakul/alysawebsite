@@ -106,6 +106,45 @@
     updateHeaderTint();
   }
 
+  /* ---------- hamburger dropdown for the nav on mobile (styled in css/style.css) ---------- */
+
+  var siteNav = header && header.querySelector('.site-nav');
+
+  if (siteNav) {
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'nav-toggle';
+    toggle.setAttribute('aria-label', 'Menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>';
+
+    siteNav.id = siteNav.id || 'site-nav';
+    toggle.setAttribute('aria-controls', siteNav.id);
+    header.appendChild(toggle);
+    header.classList.add('has-menu');
+
+    var setMenu = function (open) {
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    toggle.addEventListener('click', function () {
+      setMenu(!header.classList.contains('menu-open'));
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!header.contains(e.target)) setMenu(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    window.matchMedia('(min-width: 701px)').addEventListener('change', function (e) {
+      if (e.matches) setMenu(false);
+    });
+  }
+
   /* ---------- fade transition between pages ---------- */
 
   document.addEventListener('click', function (e) {
