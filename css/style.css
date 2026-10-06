@@ -1648,9 +1648,15 @@ button {
   .doc-header {
     flex-direction: column;
   }
+  /* role/timeline and tools stay side by side, as on desktop; the columns shrink to fit */
   .doc-header__meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 11rem));
     padding-top: 0;
-    gap: 1.5rem 2rem;
+    gap: 1.5rem 1.5rem;
+  }
+  .doc-meta-col {
+    width: auto;
   }
 }
 
