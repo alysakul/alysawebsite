@@ -1540,44 +1540,63 @@ button {
 .competitor-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin: 2.5rem 0 0;
+  column-gap: 1.25rem;
+  row-gap: 1.25rem;
+  margin: 2.5rem 0 2.5rem;
 }
 
+/* title and body share rows across cards so the body text lines up */
 .prose .competitor-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  row-gap: 0;
   background: #fafbff;
-  border: 1px solid var(--cascade-border);
-  border-radius: 14px;
-  padding: 1.5rem 1.4rem;
-  box-shadow: 0 4px 20px rgba(17, 40, 69, 0.07);
+  border: 2px solid var(--cascade-orange);
+  border-radius: 0;
+  padding: 1.6rem 1.5rem 1.75rem;
+  box-shadow: 5px 5px 0 var(--cascade-orange);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prose .competitor-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--cascade-orange);
 }
 
 .prose .competitor-card__tag {
   margin: 0 0 0.6rem;
-  font-size: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cascade-orange);
 }
 
 .prose .competitor-card h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1.35rem;
+  margin: 0 0 0.85rem;
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.15;
   color: var(--cascade-navy);
 }
 
 .prose .competitor-card p:not(.competitor-card__tag) {
   margin: 0;
+  font-family: var(--font-round);
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #16233a;
+  color: var(--cascade-navy);
 }
 
 @media (max-width: 900px) {
   .competitor-grid {
     grid-template-columns: 1fr;
+  }
+  .prose .competitor-card {
+    grid-row: auto;
+    grid-template-rows: none;
   }
 }
