@@ -1206,6 +1206,24 @@ button {
   margin: 0 0 0.7rem;
 }
 
+/* tall screenshots: scale the pair down so both, with captions, fit in one screen */
+.prose .compare-pair--fit img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(calc(100vh - 12rem), 32rem);
+  max-height: min(calc(100dvh - 12rem), 32rem);
+  margin: 0 auto;
+  border: 1px solid var(--line);
+}
+
+@media (min-width: 561px) {
+  .compare-pair--fit {
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
 /* ---------- about page ---------- */
 
 /* about page is exactly one screen tall on desktop and laptop, with the type scaling down to fit short windows */
@@ -1662,13 +1680,10 @@ button {
 
 /* ---------- cascade: competitive analysis ---------- */
 
-.cascade-band {
-  background: var(--cascade-lavender);
-  box-shadow: 0 0 0 100vmax var(--cascade-lavender);
-}
-
-.prose .cascade-band > .page-eyebrow {
-  color: #5b6b85;
+/* how-might-we banner, in Cascade's navy and orange */
+.hmw-banner--cascade {
+  background: var(--cascade-navy);
+  color: var(--white);
 }
 
 .competitor-grid {
