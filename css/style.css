@@ -1775,17 +1775,35 @@ button {
    Large monitors only (1800px and up). Laptops keep the layout above.
    ================================================================== */
 @media (min-width: 1800px) {
+  /* one content width shared by the nav bar, page headers and page content */
+  :root {
+    --wrap: 88rem;
+  }
+
   /* nav pulls in from the screen edges */
   .site-header {
-    padding-left: calc((100vw - 74rem) / 2);
-    padding-right: calc((100vw - 74rem) / 2);
+    padding-left: calc((100vw - var(--wrap)) / 2);
+    padding-right: calc((100vw - var(--wrap)) / 2);
+  }
+
+  /* every page's content (and so its header) lines up under the nav bar */
+  .page-main {
+    padding-left: calc((100vw - var(--wrap)) / 2);
+    padding-right: calc((100vw - var(--wrap)) / 2);
+  }
+
+  /* project docs and gallery headers sit in the same spot as the other pages' */
+  .doc-header {
+    margin-top: 0;
   }
 
   /* home page: centered column, everything scaled up a little */
   .editorial {
     width: 100%;
-    max-width: 88rem;
+    max-width: var(--wrap);
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 3.8rem;
     /* a touch less than the top so the mast + portrait read as vertically centered */
     padding-bottom: 2.05rem;
@@ -1843,7 +1861,14 @@ button {
 
   /* project docs: same width as the nav bar */
   .page-main--narrow {
-    max-width: 74rem;
+    max-width: var(--wrap);
+  }
+
+  /* projects list: title lines up with the nav, cards a little smaller but still wider than the nav bar */
+  .project-grid {
+    max-width: 96rem;
+    margin-left: calc((var(--wrap) - 96rem) / 2);
+    margin-right: calc((var(--wrap) - 96rem) / 2);
   }
 
   /* know before you go: video as wide as the text */
@@ -1864,26 +1889,34 @@ button {
     overflow: visible;
   }
   body.page--fit .page-main {
-    /* about content centered in the middle of the screen */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: calc((100vw - 74rem) / 2);
-    padding-right: calc((100vw - 74rem) / 2);
-    /* top padding + the 88px header, so the content sits in the middle of the whole screen */
+    /* top padding + the 88px header, so the block sits in the middle of the whole screen */
     padding-bottom: 7.25rem;
   }
+  /* title sits right above the text, and the whole block (title, text, photo) centers in the middle of the screen */
   body.page--fit .about-body {
-    align-items: center;
-    font-size: 1.25rem;
+    flex: 0 0 auto;
+    margin-block: auto;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    /* empty 1fr rows above and below the title + text center them against the photo */
+    grid-template-rows: 1fr auto auto 1fr;
+    row-gap: 0;
+    align-items: start;
+    font-size: 1.35rem;
   }
   body.page--fit .about-body > div:first-child {
     display: contents;
   }
   body.page--fit .about-body .page-title {
-    grid-column: 1 / -1;
+    grid-column: 1;
+    grid-row: 2;
     font-size: 3rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 1.75rem;
+  }
+  body.page--fit .about-body .prose {
+    grid-column: 1;
+    grid-row: 3;
   }
   body.page--fit .about-body .prose p {
     margin-bottom: 1.4rem;
@@ -1901,5 +1934,11 @@ button {
   body.page--fit .about-photos {
     position: static;
     transform: none;
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: center;
+  }
+  body.page--fit .about-photo {
+    width: min(90%, 62vh);
   }
 }
