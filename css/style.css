@@ -120,8 +120,6 @@ button {
 /* ---------- editorial home page ---------- */
 
 .editorial {
-  max-width: 76rem;
-  margin: 0 auto;
   padding: 3.2rem clamp(3rem, 7vw, 7rem) 0;
 }
 
@@ -310,57 +308,6 @@ button {
 
 .contact__linkedin:hover {
   opacity: 0.75;
-}
-
-/* desktop: scale the home page up a little */
-@media (min-width: 901px) {
-  .editorial {
-    max-width: 88rem;
-    padding-top: 3.8rem;
-  }
-  .editorial__mast {
-    font-size: clamp(3.2rem, 10vw, 8.25rem);
-  }
-  .editorial__rule {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-  }
-  .editorial__rule span {
-    font-size: 0.85rem;
-  }
-  .editorial__body {
-    gap: 3rem;
-    margin-top: 2.6rem;
-  }
-  .editorial__bio {
-    font-size: 1.5rem;
-  }
-  .editorial__bio .drop {
-    font-size: 5.55rem;
-  }
-  .editorial__nav {
-    margin-top: 2.3rem;
-    padding: 1.3rem 0;
-  }
-  .editorial__nav a {
-    font-size: 1.2rem;
-  }
-  .editorial__contact {
-    margin-top: 1.75rem;
-    font-size: 1.55rem;
-  }
-  .editorial__contact .contact__linkedin {
-    width: 48px;
-    height: 48px;
-  }
-  .editorial__contact .contact__linkedin img {
-    width: 25px;
-    height: 25px;
-  }
-  .editorial__portrait-col .portrait-frame {
-    /* big, but short windows shrink it so the whole head stays on screen */
-    max-width: min(470px, calc((100vh - 11rem) * 0.805));
-  }
 }
 
 /* ---------- responsive ---------- */
@@ -673,7 +620,7 @@ button {
 .split-section--phone .split-section__media img {
   width: auto;
   max-width: 100%;
-  max-height: min(34rem, calc(100vh - 11rem));
+  max-height: calc(100vh - 11rem);
 }
 
 .split-section--center {
@@ -1300,32 +1247,46 @@ button {
 
 /* ---------- about page ---------- */
 
-.about-body {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 2.5rem;
-  align-items: start;
+/* about page is exactly one screen tall on desktop and laptop, with the type scaling down to fit short windows */
+@media (min-width: 901px) and (min-height: 480px) {
+  body.page--fit {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  body.page--fit .page-main {
+    min-height: 0;
+    padding-bottom: 4rem;
+  }
+
+  /* 1.2rem is the normal size; it only shrinks when the window is short or narrow */
+  body.page--fit .about-body {
+    font-size: max(12px, min(1.2rem, 2.7vh, 1.6vw));
+  }
+  body.page--fit .about-body .page-title {
+    font-size: 2.5em;
+    margin-bottom: 1.17em;
+  }
+  body.page--fit .about-body .prose {
+    font-size: 1em;
+  }
+  body.page--fit .about-body .prose p {
+    margin-bottom: 1.17em;
+  }
+  body.page--fit .about-body .prose p:has(+ h2) {
+    margin-bottom: 0.83em;
+  }
+  body.page--fit .about-body .prose h2 {
+    font-size: 1.46em;
+  }
 }
 
-/* desktop: text and photo side by side under the page title */
-@media (min-width: 901px) {
-  .about-body {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    column-gap: 0;
-  }
-  .about-body .prose {
-    font-size: 1.55rem;
-  }
-  .about-body .about-photos {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-end;
-  }
-  .about-body .about-photo {
-    flex: none;
-    width: min(85%, 60vh);
-    max-width: none;
-  }
+.about-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 2.5rem;
+  align-items: start;
 }
 
 /* equal space above and below the section headings */
@@ -1339,13 +1300,16 @@ button {
 
 .about-photos {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 1.5rem;
+  position: relative;
+  top: calc(50vh - 56px);
+  transform: translateY(-50%);
 }
 
 .about-photo {
-  flex: 1 1 200px;
-  max-width: 30rem;
+  width: min(85%, 60vh);
   margin: 0;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -1574,6 +1538,7 @@ button {
   position: relative;
   cursor: pointer;
   width: 100%;
+  max-width: 40rem;
   aspect-ratio: 16 / 10;
   border-radius: 6px;
   overflow: hidden;
@@ -1676,6 +1641,19 @@ button {
 }
 
 @media (max-width: 900px) {
+  .about-body {
+    grid-template-columns: 1fr;
+  }
+  .about-photos {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .about-photo {
+    flex: 1 1 200px;
+    width: auto;
+  }
   .prose figure.figure--pair {
     grid-template-columns: 1fr;
   }
@@ -1790,5 +1768,138 @@ button {
   .prose .competitor-card {
     grid-row: auto;
     grid-template-rows: none;
+  }
+}
+
+/* ==================================================================
+   Large monitors only (1800px and up). Laptops keep the layout above.
+   ================================================================== */
+@media (min-width: 1800px) {
+  /* nav pulls in from the screen edges */
+  .site-header {
+    padding-left: calc((100vw - 74rem) / 2);
+    padding-right: calc((100vw - 74rem) / 2);
+  }
+
+  /* home page: centered column, everything scaled up a little */
+  .editorial {
+    width: 100%;
+    max-width: 88rem;
+    margin: 0 auto;
+    padding-top: 3.8rem;
+    /* a touch less than the top so the mast + portrait read as vertically centered */
+    padding-bottom: 2.05rem;
+    /* centered in the middle of the screen */
+    min-height: 100vh;
+    min-height: 100dvh;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .editorial__mast {
+    font-size: 8.25rem;
+  }
+  .editorial__rule {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+  .editorial__rule span {
+    font-size: 0.85rem;
+  }
+  .editorial__body {
+    gap: 3rem;
+    margin-top: 2.6rem;
+  }
+  .editorial__bio {
+    font-size: 1.5rem;
+  }
+  .editorial__bio .drop {
+    font-size: 5.55rem;
+  }
+  .editorial__nav {
+    margin-top: 2.3rem;
+    padding: 1.3rem 0;
+  }
+  .editorial__nav a {
+    font-size: 1.2rem;
+  }
+  .editorial__contact {
+    margin-top: 1.75rem;
+    font-size: 1.55rem;
+  }
+  .editorial__contact .contact__linkedin {
+    width: 48px;
+    height: 48px;
+  }
+  .editorial__contact .contact__linkedin img {
+    width: 25px;
+    height: 25px;
+  }
+  .editorial__portrait-col .portrait-frame {
+    /* big, but short windows shrink it so the whole head stays on screen */
+    max-width: min(470px, calc((100vh - 11rem) * 0.805));
+  }
+
+  /* project docs: same width as the nav bar */
+  .page-main--narrow {
+    max-width: 74rem;
+  }
+
+  /* know before you go: video as wide as the text */
+  .hero-video {
+    max-width: none;
+  }
+
+  /* district market: smaller phone image */
+  .split-section--phone .split-section__media img {
+    max-height: min(34rem, calc(100vh - 11rem));
+  }
+
+  /* about: title on top, text and photo side by side, scrolls normally */
+  body.page--fit {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  body.page--fit .page-main {
+    /* about content centered in the middle of the screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: calc((100vw - 74rem) / 2);
+    padding-right: calc((100vw - 74rem) / 2);
+    /* top padding + the 88px header, so the content sits in the middle of the whole screen */
+    padding-bottom: 7.25rem;
+  }
+  body.page--fit .about-body {
+    align-items: center;
+    font-size: 1.25rem;
+  }
+  body.page--fit .about-body > div:first-child {
+    display: contents;
+  }
+  body.page--fit .about-body .page-title {
+    grid-column: 1 / -1;
+    font-size: 3rem;
+    margin-bottom: 3.5rem;
+  }
+  body.page--fit .about-body .prose p {
+    margin-bottom: 1.4rem;
+  }
+  body.page--fit .about-body .prose p:has(+ h2) {
+    margin-bottom: 1rem;
+  }
+  /* no trailing space, so the text block centers exactly against the photo */
+  body.page--fit .about-body .prose p:last-child {
+    margin-bottom: 0;
+  }
+  body.page--fit .about-body .prose h2 {
+    font-size: 1.75rem;
+  }
+  body.page--fit .about-photos {
+    position: static;
+    transform: none;
   }
 }
