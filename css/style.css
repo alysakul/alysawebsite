@@ -120,6 +120,8 @@ button {
 /* ---------- editorial home page ---------- */
 
 .editorial {
+  max-width: 76rem;
+  margin: 0 auto;
   padding: 3.2rem clamp(3rem, 7vw, 7rem) 0;
 }
 
@@ -620,7 +622,7 @@ button {
 .split-section--phone .split-section__media img {
   width: auto;
   max-width: 100%;
-  max-height: calc(100vh - 11rem);
+  max-height: min(34rem, calc(100vh - 11rem));
 }
 
 .split-section--center {
@@ -1247,44 +1249,9 @@ button {
 
 /* ---------- about page ---------- */
 
-/* about page is exactly one screen tall on desktop and laptop, with the type scaling down to fit short windows */
-@media (min-width: 901px) and (min-height: 480px) {
-  body.page--fit {
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-  }
-  body.page--fit .page-main {
-    min-height: 0;
-    padding-bottom: 4rem;
-  }
-
-  /* 1.2rem is the normal size; it only shrinks when the window is short or narrow */
-  body.page--fit .about-body {
-    font-size: max(12px, min(1.2rem, 2.7vh, 1.6vw));
-  }
-  body.page--fit .about-body .page-title {
-    font-size: 2.5em;
-    margin-bottom: 1.17em;
-  }
-  body.page--fit .about-body .prose {
-    font-size: 1em;
-  }
-  body.page--fit .about-body .prose p {
-    margin-bottom: 1.17em;
-  }
-  body.page--fit .about-body .prose p:has(+ h2) {
-    margin-bottom: 0.83em;
-  }
-  body.page--fit .about-body .prose h2 {
-    font-size: 1.46em;
-  }
-}
-
 .about-body {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  column-gap: 0;
+  grid-template-columns: 1fr;
   row-gap: 2.5rem;
   align-items: start;
 }
@@ -1300,16 +1267,13 @@ button {
 
 .about-photos {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-wrap: wrap;
   gap: 1.5rem;
-  position: relative;
-  top: calc(50vh - 56px);
-  transform: translateY(-50%);
 }
 
 .about-photo {
-  width: min(85%, 60vh);
+  flex: 1 1 200px;
+  max-width: 30rem;
   margin: 0;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -1538,7 +1502,6 @@ button {
   position: relative;
   cursor: pointer;
   width: 100%;
-  max-width: 40rem;
   aspect-ratio: 16 / 10;
   border-radius: 6px;
   overflow: hidden;
@@ -1641,19 +1604,6 @@ button {
 }
 
 @media (max-width: 900px) {
-  .about-body {
-    grid-template-columns: 1fr;
-  }
-  .about-photos {
-    position: static;
-    transform: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .about-photo {
-    flex: 1 1 200px;
-    width: auto;
-  }
   .prose figure.figure--pair {
     grid-template-columns: 1fr;
   }
