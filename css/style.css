@@ -1307,16 +1307,23 @@ button {
   align-items: start;
 }
 
-/* desktop: text and photo side by side, tops lined up */
+/* desktop: text and photo side by side under the page title */
 @media (min-width: 901px) {
   .about-body {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    column-gap: 3.5rem;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 0;
   }
   .about-body .prose {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
   }
-  .about-photo {
+  .about-body .about-photos {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+  }
+  .about-body .about-photo {
+    flex: none;
+    width: min(85%, 60vh);
     max-width: none;
   }
 }
