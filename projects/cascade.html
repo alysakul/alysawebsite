@@ -64,12 +64,15 @@
       and patients are often provided with little guidance and resources from doctors or medical professionals. 
     </p>
     <p>Due to a lack of resources or process for tapering, patients often use a series of disparate tools to track their progress. 
-      These can range from journal entries, to spreadsheets and AI chat logs. 
+      These can range from handwritten journal entries, to spreadsheets and AI chat logs. 
     </p>
 
     <section>
       <p class="page-eyebrow page-eyebrow--lead">Research</p>
       <h2>Competitive analysis and existing solutions</h2>
+      <p>The PHD candidate managing our team had already run a series of interviews and surveys with tapering patients. 
+        We now needed to use that data to decide on features and functionality for our platform.
+      </p>
       <p>We looked into existing websites, apps, and support forums, and
         identified where they fell short.
       </p>
@@ -81,15 +84,15 @@
         </article>
         <article class="competitor-card">
           <h3>Surviving Antidepressants</h3>
-          <p>A patient-led website providing peer support to those tapering, containing FAQs, and spaces for those tapering to discuss their experiences.</p>
+          <p>A patient-led website providing peer support for those tapering, containing FAQs, and spaces for patients to discuss their experiences.</p>
         </article>
         <article class="competitor-card">
           <h3>CureTogether</h3>
-          <p>A platform that allowed patients to anonymously track their symptoms, treatments, medications, and side effects, simultaneously collecting data about hundreds of medical conditions.</p>
+          <p>A platform for patients to anonymously track their symptoms, treatments, medications, and side effects, simultaneously collecting data about hundreds of medical conditions.</p>
         </article>
       </div>
-      <p>We found that although tracking platforms exist, there are no available platforms that process and store existing user tapering data. 
-        Many platforms provide support for patients beginning tapering, not for those in the process.
+      <p>From current solutions, we found that there are no available platforms that process and store existing user tapering data. 
+        Many platforms <strong>provide support for patients beginning tapering, not for those in the process.</strong>
       </p>
     </section>
 
@@ -114,22 +117,32 @@
       </div>
     </div>
 
-    <div class="compare-pair compare-pair--fit">
+    <div class="compare-pair compare-pair--fit compare-pair--text">
       <figure>
         <figcaption>Second lo-fi iteration</figcaption>
         <img src="../assets/images/projects/cascade-iteration-2.png" alt="Second iteration of the home page: a dark navigation bar, a &ldquo;The Tapering Project&rdquo; title, a blue &ldquo;How your data travels&rdquo; panel with four steps, a QR code to download the app, Log In and Upload as guest buttons, and an Our Mission section">
       </figure>
+      <p>Through simple design and a walkthrough on the home page, we designed the website with a range of tapering patients in mind: from young, tech-savvy adults, to older individuals who may be less familiar with digital platforms.</p>
       <figure>
         <figcaption>Mid-fi iteration</figcaption>
         <img src="../assets/images/projects/cascade-iteration-3.png" alt="Third iteration of the home page, branded TaperTrack: a hero reading &ldquo;Your tapering data can help the next person taper safer&rdquo; beside a &ldquo;How your upload travels&rdquo; panel, a four-step section, and a dark app download banner with a QR code">
       </figure>
     </div>
 
+    <div class="split-section split-section--continued split-section--media-wide-left split-section--center">
+      <div class="split-section__media">
+        <figure>
+          <img src="../assets/images/projects/cascade-user-flow.png" alt="User flow diagram: from opening the website, a logged-in check leads to the home screen or a log in step, with guest access, and the home screen links to add data, profile, about/FAQ, and privacy/data use pages">
+        </figure>
+      </div>
+      <div class="split-section__text">
+        <p>All pages are accessible from the home screen so users can navigate as easily as possible.</p>
+      </div>
+    </div>
+
     <p class="page-eyebrow">Development</p>
-    <h2>Building the platform</h2>
-    <p>Our solution introduces a website where patients can voluntarily upload and store their data in one place.
-      We can use this data to gain valuable insights into the tapering process. By analyizng the data, 
-      we can improve the tapering process for future patients.</p>
+    <h2>MVP 1</h2>
+    <p>Once the design was finalized, development was straightforward. I used Supabase to build the backend.</p>
   </div>
   </div>
 </main>

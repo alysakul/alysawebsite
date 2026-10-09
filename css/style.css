@@ -606,6 +606,11 @@ button {
   grid-template-columns: 0.8fr 1.3fr;
 }
 
+/* same proportions as --media-wide, with the media on the left */
+.split-section--media-wide-left {
+  grid-template-columns: 1.3fr 0.8fr;
+}
+
 .split-section--phone {
   grid-template-columns: minmax(0, 25rem) auto;
   justify-content: center;
@@ -1207,6 +1212,12 @@ button {
 }
 
 /* tall screenshots: scale the pair down so both, with captions, fit in one screen */
+/* extra room above so the captions don't sit right under the previous text, and below before the next block */
+.prose .compare-pair--text {
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+}
+
 .prose .compare-pair--fit img {
   width: auto;
   max-width: 100%;
@@ -1221,6 +1232,16 @@ button {
     grid-template-columns: repeat(2, auto);
     justify-content: center;
     gap: 2rem;
+  }
+
+  /* paragraph sits between the two screenshots, centred vertically */
+  .compare-pair--fit.compare-pair--text {
+    grid-template-columns: minmax(0, 1fr) minmax(10rem, 15rem) minmax(0, 1fr);
+    align-items: start;
+  }
+  .compare-pair--text > p {
+    align-self: center;
+    margin: 0;
   }
 }
 

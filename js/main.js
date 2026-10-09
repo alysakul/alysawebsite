@@ -73,7 +73,9 @@
 
     var updateHeaderTint = function () {
       ticking = false;
-      var probe = header.getBoundingClientRect().height / 2;
+      /* sample near the bottom edge of the header so the colour switches as soon as a
+         band starts to slide under it, rather than once it reaches the header's middle */
+      var probe = header.getBoundingClientRect().height - 15;
       var color = '';
       for (var i = 0; i < tinted.length; i++) {
         var r = tinted[i].getBoundingClientRect();
