@@ -10,8 +10,14 @@
   --white: #ffffff;
   --bg: #f2f4f6;
   --line: #e2e2e2;
-  --gray: #8c8c8c;
+  --gray: #626262;
   --orange: #ff971c;
+  /* darker oranges for text, so it passes contrast on light backgrounds */
+  --orange-text: #8a4a00;
+  --orange-text-large: #b35900;
+  --orange-on-dark: #ffc06b;
+  /* between the bright orange and the dark text orange: hover colour and the home page H */
+  --orange-mid: #c46800;
   --navy: #0e2747;
   --blue: #3a6fb3;
   --kbyg-green: #c3dfbd;
@@ -172,7 +178,7 @@ button {
   font-size: 4.83rem;
   line-height: 0.8;
   font-weight: 600;
-  color: var(--orange);
+  color: var(--orange-mid);
   padding-right: 0.14em;
   margin-top: 0.026em;
 }
@@ -199,8 +205,13 @@ button {
   margin-top: 1.5rem;
 }
 
+/* email link is styled like the projects / about / gallery links beside it */
 .editorial__contact .contact__email {
+  font-family: var(--font-sans);
+  font-size: var(--nav-font-size);
   font-weight: 500;
+  line-height: 1.2;
+  padding: 0.4rem 0;
 }
 
 .hover-hint {
@@ -283,7 +294,7 @@ button {
 }
 
 .contact__email:hover {
-  color: var(--orange);
+  color: var(--orange-mid);
 }
 
 .contact__email:hover::after {
@@ -388,7 +399,7 @@ button {
 }
 
 .page-nav a:hover {
-  color: var(--orange);
+  color: var(--orange-mid);
 }
 
 .page-nav a:hover::after {
@@ -396,7 +407,12 @@ button {
 }
 
 .page-nav a.is-current {
-  color: var(--orange);
+  color: var(--orange-text);
+}
+
+/* on a dark band the orange needs to be lighter to pass contrast */
+.site-header.is-on-dark .page-nav a.is-current {
+  color: var(--orange-on-dark);
 }
 
 .site-header.is-on-dark .page-nav a:not(.is-current) {
@@ -404,7 +420,7 @@ button {
 }
 
 .site-header.is-on-dark .page-nav a:not(.is-current):hover {
-  color: var(--orange);
+  color: var(--orange-on-dark);
 }
 
 .page-nav a.is-current::after {
@@ -949,7 +965,7 @@ button {
 }
 
 .stat-bubble--pf-blue .stat-bubble__number {
-  color: var(--pf-site-teal);
+  color: #0b7a7d;
 }
 
 .stat-bubble--pf-orange {
@@ -957,7 +973,7 @@ button {
 }
 
 .stat-bubble--pf-orange .stat-bubble__number {
-  color: var(--pf-site-orange);
+  color: #9a5c00;
 }
 
 .stat-bubble--pf-blue p.stat-bubble__label,
@@ -1439,7 +1455,7 @@ button {
 }
 
 .project-card:hover .project-card__title {
-  color: var(--orange);
+  color: var(--orange-mid);
 }
 
 .project-card__tags {
@@ -1993,7 +2009,9 @@ button {
   }
   .editorial__contact {
     margin-top: 1.75rem;
-    font-size: 1.55rem;
+  }
+  .editorial__contact .contact__email {
+    font-size: 1.2rem;
   }
   .editorial__contact .contact__linkedin {
     width: 48px;
