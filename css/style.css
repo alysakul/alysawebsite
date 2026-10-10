@@ -288,7 +288,7 @@ button {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: var(--orange);
+  background: currentColor;
   transform: translateX(-50%);
   transition: width 0.55s ease;
 }
@@ -393,7 +393,7 @@ button {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: var(--orange);
+  background: currentColor;
   transform: translateX(-50%);
   transition: width 0.55s ease;
 }
