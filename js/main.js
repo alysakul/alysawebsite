@@ -66,7 +66,7 @@
   var header = document.querySelector('.site-header');
   /* every full-width coloured band on the site; a band whose colour isn't a plain
      background (e.g. a border-image fill) can declare it with --header-tint */
-  var tinted = document.querySelectorAll('.tinted-section, .hmw-banner, .doc-hero');
+  var tinted = document.querySelectorAll('.tinted-section, .hmw-banner, .doc-hero, .mvp-band');
 
   if (header && tinted.length) {
     var ticking = false;

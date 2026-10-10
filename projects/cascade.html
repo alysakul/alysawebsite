@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=Nunito+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=190">
+<link rel="stylesheet" href="../css/style.css?v=201">
 <link rel="icon" type="image/png" href="../assets/favicon/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
 </head>
@@ -122,7 +122,7 @@
         <figcaption>Second lo-fi iteration</figcaption>
         <img src="../assets/images/projects/cascade-iteration-2.png" alt="Second iteration of the home page: a dark navigation bar, a &ldquo;The Tapering Project&rdquo; title, a blue &ldquo;How your data travels&rdquo; panel with four steps, a QR code to download the app, Log In and Upload as guest buttons, and an Our Mission section">
       </figure>
-      <p>Through simple design and a walkthrough on the home page, we designed the website with a range of tapering patients in mind: from young, tech-savvy adults, to older individuals who may be less familiar with digital platforms.</p>
+      <p>We designed the website with a range of tapering patients in mind: from young, tech-savvy adults, to older individuals who may be less familiar with digital platforms.</p>
       <figure>
         <figcaption>Mid-fi iteration</figcaption>
         <img src="../assets/images/projects/cascade-iteration-3.png" alt="Third iteration of the home page, branded TaperTrack: a hero reading &ldquo;Your tapering data can help the next person taper safer&rdquo; beside a &ldquo;How your upload travels&rdquo; panel, a four-step section, and a dark app download banner with a QR code">
@@ -140,13 +140,83 @@
       </div>
     </div>
 
-    <p class="page-eyebrow">Development</p>
-    <h2>MVP 1</h2>
-    <p>Once the design was finalized, development was straightforward. I used Supabase to build the backend.</p>
+    <div class="mvp-band">
+      <p class="page-eyebrow">Development</p>
+      <h2>MVP 1</h2>
+      <div class="split-section split-section--continued">
+        <div class="split-section__text">
+          <p>Once the design was finalized, I began working on the implementation. I used Supabase to build the backend while
+            my partner conducted user tests. We used feedback to revise the website design before the release of MVP 1.
+          </p>
+        </div>
+        <div class="split-section__media">
+          <blockquote class="user-test-quote">
+            <p>&ldquo;Spelling medications is hard &mdash; specific adhd medication didn&rsquo;t show up so [user] had to use the &ldquo;other&rdquo; option.&rdquo;</p>
+          </blockquote>
+        </div>
+      </div>
+      <div class="split-section split-section--continued split-section--video-wide split-section--center">
+        <div class="split-section__media">
+          <video class="demo-video" src="../assets/videos/cascade-autocomplete.webm" autoplay loop muted playsinline aria-label="Screen recording of the medication name autocomplete on the upload data page: typing &ldquo;ser&rdquo; shows matching medications, and Sertraline (Zoloft) is selected"></video>
+        </div>
+        <div class="split-section__text">
+          <p>I created a database of 90+ common medications and their generic 
+            names, and implemented a search function to filter options as the user types.
+        </p>
+        </div>
+      </div>
+      <p class="page-eyebrow">Development</p>
+      <h2>MVP 2</h2>
+      <p>For MVP 2 I focused on security surrounding user data. I implemented row level security (RLS) in nearly every part of the data upload process.</p>
+
+      <div class="rls-chart">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Who can access it</th>
+              <th scope="col">Why it&rsquo;s safer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">User profile</th>
+              <td data-label="Who can access it">Only user</td>
+              <td data-label="Why it&rsquo;s safer">Other users can&rsquo;t see survey answers.</td>
+            </tr>
+            <tr>
+              <th scope="row">Tapering entries</th>
+              <td data-label="Who can access it">Only user</td>
+              <td data-label="Why it&rsquo;s safer">History stays private, and the user can delete it anytime.</td>
+            </tr>
+            <tr>
+              <th scope="row">Saved drafts</th>
+              <td data-label="Who can access it">Only user</td>
+              <td data-label="Why it&rsquo;s safer">Unfinished entries stay private.</td>
+            </tr>
+            <tr>
+              <th scope="row">Attached files</th>
+              <td data-label="Who can access it">Only user</td>
+              <td data-label="Why it&rsquo;s safer">Files stay private, and type and size are checked.</td>
+            </tr>
+            <tr>
+              <th scope="row">Guest submissions</th>
+              <td data-label="Who can access it">Submit only, no read-back</td>
+              <td data-label="Why it&rsquo;s safer">Guests stay anonymous.</td>
+            </tr>
+            <tr>
+              <th scope="row">New submissions</th>
+              <td data-label="Who can access it">Secure step only</td>
+              <td data-label="Why it&rsquo;s safer">CAPTCHA and rate limit block bots and fake data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   </div>
 </main>
 
-<script src="../js/main.js?v=12"></script>
+<script src="../js/main.js?v=13"></script>
 </body>
 </html>
