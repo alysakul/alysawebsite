@@ -1280,13 +1280,43 @@ button {
     padding-bottom: 4rem;
   }
 
+  body.page--fit .page-main {
+    display: flex;
+    flex-direction: column;
+  }
+
   /* 1.2rem is the normal size; it only shrinks when the window is short or narrow */
   body.page--fit .about-body {
     font-size: max(12px, min(1.2rem, 2.7vh, 1.6vw));
+    /* the title + text block and the photo are centered on each other in the middle of the screen */
+    flex: 0 0 auto;
+    margin-block: auto;
+    /* empty 1fr rows above and below the title + text center them against the photo */
+    grid-template-rows: 1fr auto auto 1fr;
+    row-gap: 0;
+  }
+  body.page--fit .about-body > div:first-child {
+    display: contents;
   }
   body.page--fit .about-body .page-title {
+    grid-column: 1;
+    grid-row: 2;
     font-size: 2.5em;
     margin-bottom: 1.17em;
+  }
+  body.page--fit .about-body .prose {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  body.page--fit .about-body .prose p:last-child {
+    margin-bottom: 0;
+  }
+  body.page--fit .about-photos {
+    position: static;
+    transform: none;
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: center;
   }
   body.page--fit .about-body .prose {
     font-size: 1em;
